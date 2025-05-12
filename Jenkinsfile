@@ -11,7 +11,7 @@ pipeline {
   stages {
     stage('Clonar código') {
       steps {
-        git branach: 'main', url: 'https://github.com/garojual/APISPracticas.git'
+        git branch: 'main', url: 'https://github.com/garojual/APISPracticas.git'
       }
     }
 
