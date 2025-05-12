@@ -19,14 +19,14 @@ pipeline {
     stage('Build y pruebas') {
       steps {
         sh 'mvn clean verify'
-        junit '**/target/surefire-reports/*.xml'
+        junit '**/target/cucumber-reports/cucumber.xml'
       }
     }
 
     stage('Análisis de calidad') {
       steps {
         withSonarQubeEnv("${SONARQUBE_ENV}") {
-          sh './mvnw sonar:sonar'
+          sh 'mvn sonar:sonar'
         }
       }
     }

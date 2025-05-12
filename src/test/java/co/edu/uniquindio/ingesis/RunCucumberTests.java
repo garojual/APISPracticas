@@ -11,7 +11,7 @@ import static io.cucumber.junit.platform.engine.Constants.*;
 @IncludeEngines("cucumber")
 @SelectClasspathResource("features")
 @ConfigurationParameter(key = GLUE_PROPERTY_NAME, value = "co.edu.uniquindio.ingesis.stepdefs")
-@ConfigurationParameter(key = PLUGIN_PROPERTY_NAME, value = "pretty, html:target/cucumber-reports/registro-usuario-report.html, json:target/cucumber-reports/registro-usuario-report.json")
+@ConfigurationParameter(key = PLUGIN_PROPERTY_NAME, value = "pretty, html:target/cucumber-reports/registro-usuario-report.html, json:target/cucumber-reports/registro-usuario-report.json, junit:target/cucumber-reports/cucumber.xml")
 public class RunCucumberTests {
 }
 
