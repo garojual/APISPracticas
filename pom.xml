@@ -148,6 +148,14 @@
             <scope>test</scope>
         </dependency>
 
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter</artifactId>
+            <version>5.10.0</version>
+            <scope>test</scope>
+        </dependency>
+
+
         <!-- Hamcrest para aserciones adicionales -->
         <dependency>
             <groupId>org.hamcrest</groupId>
@@ -168,15 +176,14 @@
 
         <dependency>
             <groupId>org.junit.platform</groupId>
-            <artifactId>junit-platform-suite-api</artifactId>
-            <version>1.10.2</version>
+            <artifactId>junit-platform-suite</artifactId>
+            <version>1.10.1</version>
             <scope>test</scope>
         </dependency>
 
         <dependency>
-            <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter</artifactId>
-            <version>5.10.2</version>
+            <groupId>io.quarkus</groupId>
+            <artifactId>quarkus-jdbc-h2</artifactId>
             <scope>test</scope>
         </dependency>
     </dependencies>
@@ -200,6 +207,13 @@
                 </executions>
             </plugin>
             <plugin>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>${compiler-plugin.version}</version>
+                <configuration>
+                    <parameters>true</parameters>
+                </configuration>
+            </plugin>
+            <plugin>
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>${surefire-plugin.version}</version>
                 <configuration>
@@ -209,7 +223,7 @@
                     </systemPropertyVariables>
                     <includes>
                         <include>**/*Test.java</include>
-                        <include>**/Run*.java</include>
+                        <include>*/Run.java</include>
                     </includes>
                 </configuration>
             </plugin>
@@ -238,7 +252,6 @@
                 <version>3.13.0</version> <!-- Usa la version que ya tienes -->
                 <configuration>
                     <parameters>true</parameters>
-                    <release>21</release>
                     <annotationProcessorPaths>
                         <!-- Asegura que Lombok sea un procesador -->
                         <path>

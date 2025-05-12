@@ -5,6 +5,7 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import io.cucumber.datatable.DataTable;
+import io.quarkus.test.junit.QuarkusTest;
 import io.restassured.response.Response;
 import io.restassured.response.ValidatableResponse;
 import io.restassured.specification.RequestSpecification;
@@ -23,6 +24,7 @@ import static org.hamcrest.Matchers.emptyArray;
 import static org.hamcrest.Matchers.hasItem;
 import static org.hamcrest.Matchers.hasEntry;
 
+@QuarkusTest
 public class StepsDefinitions {
 
     private Response response;
