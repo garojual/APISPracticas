@@ -17,7 +17,7 @@ pipeline {
 
     stage('Build y pruebas') {
       steps {
-        sh './mvnw clean verify'
+        sh 'mvn clean verify'
         junit '**/target/surefire-reports/*.xml'
       }
     }
