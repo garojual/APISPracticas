@@ -32,13 +32,24 @@ pipeline {
       }
     }
 
-    stage('Análisis de calidad') {
-      steps {
-        withSonarQubeEnv("${SONARQUBE_ENV}") {
-          sh 'mvn sonar:sonar'
-        }
-      }
-    }
+    stage('Análisis de calidad - SonarQube') {
+                steps {
+                    script {
+                        // Usa el ID de la credencial que creaste en Jenkins
+                        withCredentials([string(credentialsId: '2cfd8264-b49f-4307-9c29-7e3bcfbcf2d9', variable: 'SONAR_TOKEN')]) {
+                            // La variable SONAR_TOKEN ahora contiene el valor del token
+                            sh """
+                                mvn sonar:sonar \\
+                                  -Dsonar.projectKey=your_project_key \\
+                                  -Dsonar.host.url=http://sonarqube:9000 \\
+                                  -Dsonar.login=\$SONAR_TOKEN
+                            """
+                            // NOTA: Usamos \$SONAR_TOKEN para escapar el '$' dentro de la cadena Groovy
+                            // Si estás usando sh con comillas simples '', solo necesitarías $SONAR_TOKEN
+                        }
+                    }
+                }
+            }
 
     stage('Detener Quarkus') {
       steps {
