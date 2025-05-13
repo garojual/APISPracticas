@@ -68,7 +68,7 @@ public class StepsDefinitions {
                 .header("Content-Type", "application/json")
                 .body("{\"email\": \"isabellacar@gmail.com\", \"clave\": \"Password123\"}")
                 .when()
-                .post("http://quarkus-api:8081/usuarios/login");
+                .post("http://quarkus-api:8080/usuarios/login");
 
         loginResponse.then().statusCode(200);
 
@@ -87,7 +87,7 @@ public class StepsDefinitions {
                 .header("Content-Type", "application/json")
                 .body(body)
                 .when()
-                .post("http://quarkus-api:8081/usuarios");
+                .post("http://quarkus-api:8080/usuarios");
 
         createResponse.then().statusCode(201);
 
