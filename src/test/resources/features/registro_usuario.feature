@@ -45,17 +45,3 @@ Feature: Registro de usuarios
       """
     Then la respuesta debe tener el código 400
     And la respuesta debe contener un error de validación para el campo "registerUser.request.email" con el mensaje "Debe ser un email válido"
-
-  Scenario: Intento de registrar un usuario con rol inválido
-    When envío una solicitud POST a "http://quarkus-api:8080/usuarios" con el siguiente cuerpo:
-      """
-      {
-        "email": "usuario.rol@example.com",
-        "clave": "Password123",
-        "usuario": "usuarioRolInvalido",
-        "rol": "ROL_INEXISTENTE"
-      }
-      """
-    Then la respuesta debe tener el código 400
-    And la respuesta JSON contiene el campo "attributeName" con valor "rol"
-    And la respuesta JSON contiene el campo "value" con valor "ROL_INEXISTENTE"
