@@ -32,11 +32,13 @@ services:
     image: postgres:13
     container_name: postgres
     environment:
+      # Mantén la de SonarQube
       POSTGRES_USER: sonar
       POSTGRES_PASSWORD: sonar
-      POSTGRES_DB: sonarqube
+      POSTGRES_DB: sonarqube # SonarQube seguirá usando esta
     volumes:
       - postgres_data:/var/lib/postgresql/data
+      - ./init-db.sql:/docker-entrypoint-initdb.d/init-db.sql # <--- Añade esta línea
     restart: unless-stopped
 
   app:
@@ -47,9 +49,10 @@ services:
     depends_on:
       - postgres
     environment:
-      QUARKUS_DATASOURCE_JDBC_URL: jdbc:postgresql://postgres:5432/sonarqube
-      QUARKUS_DATASOURCE_USERNAME: sonar
-      QUARKUS_DATASOURCE_PASSWORD: sonar
+      # Apunta a la nueva base de datos
+      QUARKUS_DATASOURCE_JDBC_URL: jdbc:postgresql://postgres:5432/myappdb # <--- Cambia aquí
+      QUARKUS_DATASOURCE_USERNAME: sonar # O crea otro usuario si quieres
+      QUARKUS_DATASOURCE_PASSWORD: sonar # O crea otra contraseña
     ports:
       - "8081:8080"
     restart: unless-stopped

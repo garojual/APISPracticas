@@ -64,9 +64,6 @@ public class StepsDefinitions {
     @Given("estoy autenticado con un token JWT valido")
     public void estoy_autenticado_con_un_token_jwt_valido() {
 
-        existe_un_usuario_registrado_para_pruebas();
-
-
         Response loginResponse = given()
                 .header("Content-Type", "application/json")
                 .body("{\"email\": \"isabellacardozo11@gmail.com\", \"clave\": \"Password123\"}")
