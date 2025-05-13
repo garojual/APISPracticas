@@ -7,7 +7,7 @@ Feature: Registro de usuarios
     Given la API está disponible
 
   Scenario: Registrar un nuevo usuario exitosamente
-    When envío una solicitud POST a "/usuarios" con el siguiente cuerpo:
+    When envío una solicitud POST a "http://quarkus-api:8080/usuarios" con el siguiente cuerpo:
       """
       {
         "email": "nuevo@example.com",
@@ -22,7 +22,7 @@ Feature: Registro de usuarios
     And la respuesta JSON contiene el campo "rol" con valor "ADMIN"
 
   Scenario: Intento de registrar un usuario con datos incompletos (faltando usuario)
-    When envío una solicitud POST a "/usuarios" con el siguiente cuerpo:
+    When envío una solicitud POST a "http://quarkus-api:8080/usuarios" con el siguiente cuerpo:
       """
       {
         "email": "incompleto@example.com",
@@ -34,7 +34,7 @@ Feature: Registro de usuarios
     And la respuesta debe contener un error de validación para el campo "registerUser.request.usuario" con el mensaje "El campo es requerido"
 
   Scenario: Intento de registrar un usuario con formato de email inválido
-    When envío una solicitud POST a "/usuarios" con el siguiente cuerpo:
+    When envío una solicitud POST a "http://quarkus-api:8080/usuarios" con el siguiente cuerpo:
       """
       {
         "email": "emailinvalido",
@@ -47,7 +47,7 @@ Feature: Registro de usuarios
     And la respuesta debe contener un error de validación para el campo "registerUser.request.email" con el mensaje "Debe ser un email válido"
 
   Scenario: Intento de registrar un usuario con rol inválido
-    When envío una solicitud POST a "/usuarios" con el siguiente cuerpo:
+    When envío una solicitud POST a "http://quarkus-api:8080/usuarios" con el siguiente cuerpo:
       """
       {
         "email": "usuario.rol@example.com",

@@ -13,7 +13,7 @@ Feature: Actualización parcial de usuarios
     Given estoy autenticado con un token JWT valido
     # Necesitamos un usuario para actualizar, lo creamos previamente en un paso Given
     And existe un usuario con email "patch.target@example.com", usuario "patchTarget", clave "PatchSecure123" y rol "USER"
-    When envío una solicitud PATCH a "/usuarios/{id}" para el usuario creado con el siguiente cuerpo:
+    When envío una solicitud PATCH a "http://quarkus-api:8080/usuarios/{id}" para el usuario creado con el siguiente cuerpo:
       """
       {
         "email": "patch.updated@example.com",
@@ -27,7 +27,7 @@ Feature: Actualización parcial de usuarios
 
   Scenario: Acceso no autenticado a la actualización parcial
     And existe un usuario con email "patch.unauth@example.com", usuario "patchUnauth", clave "PatchSecure789" y rol "USER"
-    When envío una solicitud PATCH no autenticada a "/usuarios/{id}" para el usuario creado con el siguiente cuerpo:
+    When envío una solicitud PATCH no autenticada a "http://quarkus-api:8080/usuarios/{id}" para el usuario creado con el siguiente cuerpo:
       """
       {
         "usuario": "unauthenticatedAttempt"
