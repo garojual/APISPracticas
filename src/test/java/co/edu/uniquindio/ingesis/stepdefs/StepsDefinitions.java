@@ -37,8 +37,36 @@ public class StepsDefinitions {
         baseURI = "http://localhost:8080";
     }
 
+    @Given("existe un usuario registrado para pruebas")
+    public void existe_un_usuario_registrado_para_pruebas() {
+        // Crear objeto JSON con los datos del usuario según el formato específico
+        String userJson = "{"
+                + "\"email\": \"isabellacardozo11@gmail.com\","
+                + "\"clave\": \"Password123\","
+                + "\"usuario\": \"isabellaCardozo\","
+                + "\"rol\": \"ADMIN\""
+                + "}";
+
+        // Enviar solicitud para crear el usuario
+        Response createResponse = given()
+                .header("Content-Type", "application/json")
+                .body(userJson)
+                .when()
+                .post("/usuarios");
+
+        // Verificar si la creación fue exitosa o si el usuario ya existe
+        int statusCode = createResponse.getStatusCode();
+        if (statusCode != 201 && statusCode != 409) { // 201 Created o 409 Conflict (si ya existe)
+            throw new RuntimeException("No se pudo crear el usuario de prueba. Código: " + statusCode);
+        }
+    }
+
     @Given("estoy autenticado con un token JWT valido")
     public void estoy_autenticado_con_un_token_jwt_valido() {
+
+        existe_un_usuario_registrado_para_pruebas();
+
+
         Response loginResponse = given()
                 .header("Content-Type", "application/json")
                 .body("{\"email\": \"isabellacardozo11@gmail.com\", \"clave\": \"Password123\"}")
