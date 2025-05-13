@@ -9,7 +9,7 @@ Feature: Actualización parcial de usuarios
     # La autenticación se hará en los escenarios específicos que la requieran
 
   Scenario: Actualizar email y usuario de un usuario existente
-    Given existe un usuario registrado para pruebas
+    #Given existe un usuario registrado para pruebas
     Given estoy autenticado con un token JWT valido
     # Necesitamos un usuario para actualizar, lo creamos previamente en un paso Given
     And existe un usuario con email "patch.target@example.com", usuario "patchTarget", clave "PatchSecure123" y rol "USER"

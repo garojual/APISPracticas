@@ -5,7 +5,7 @@ Feature: Obtener lista de usuarios
 
   Background:
     Given la API está disponible
-    Given existe un usuario registrado para pruebas
+    #Given existe un usuario registrado para pruebas
     Given estoy autenticado con un token JWT valido
 
   Scenario: Obtener todos los usuarios registrados (con defaults)
