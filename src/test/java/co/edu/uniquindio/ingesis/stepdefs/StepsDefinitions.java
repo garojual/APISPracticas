@@ -34,7 +34,7 @@ public class StepsDefinitions {
 
     @Given("la API está disponible")
     public void la_api_esta_disponible() {
-        baseURI = "http://localhost:8080";
+        baseURI = "http://localhost:8081";
     }
 
     @Given("existe un usuario registrado para pruebas")
