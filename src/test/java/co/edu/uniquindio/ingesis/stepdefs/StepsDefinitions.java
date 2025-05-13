@@ -66,7 +66,7 @@ public class StepsDefinitions {
 
         Response loginResponse = given()
                 .header("Content-Type", "application/json")
-                .body("{\"email\": \"isabellacar@gmail.com\", \"clave\": \"Password123\"}")
+                .body("{\"email\": \"isabellacardozo11@gmail.com\", \"clave\": \"Password123\"}")
                 .when()
                 .post("/usuarios/login");
 
