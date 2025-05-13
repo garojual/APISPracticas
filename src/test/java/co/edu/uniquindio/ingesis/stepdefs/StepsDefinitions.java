@@ -42,8 +42,8 @@ public class StepsDefinitions {
         // Crear objeto JSON con los datos del usuario según el formato específico
         String userJson = "{"
                 + "\"email\": \"isabellacardozo11@gmail.com\","
-                + "\"clave\": \"Password123\","
                 + "\"usuario\": \"isabellaCardozo\","
+                + "\"clave\": \"Password123\","
                 + "\"rol\": \"ADMIN\""
                 + "}";
 
