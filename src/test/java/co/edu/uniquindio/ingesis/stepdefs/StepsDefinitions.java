@@ -68,7 +68,7 @@ public class StepsDefinitions {
                 .header("Content-Type", "application/json")
                 .body("{\"email\": \"isabellacar@gmail.com\", \"clave\": \"Password123\"}")
                 .when()
-                .post("/usuarios/login");
+                .post("http://localhost:8081/usuarios/login");
 
         loginResponse.then().statusCode(200);
 
@@ -87,7 +87,7 @@ public class StepsDefinitions {
                 .header("Content-Type", "application/json")
                 .body(body)
                 .when()
-                .post("/usuarios");
+                .post("http://localhost:8081/usuarios");
 
         createResponse.then().statusCode(201);
 
