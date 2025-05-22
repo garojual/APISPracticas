@@ -42,7 +42,7 @@ public class JWTUtil {
      * @return Las reclamaciones (claims) del token.
      */
     public static Claims validateToken(String token) {
-        return Jwts.parserBuilder()
+        return Jwts.parser()
                 .setSigningKey(KEY) // Clave secreta para validar la firma
                 .build()
                 .parseClaimsJws(token) // Validar y parsear el token
